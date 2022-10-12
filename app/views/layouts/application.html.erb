@@ -11,6 +11,54 @@
   </head>
 
   <body>
+  <header>
+   <% if user_signed_in? %>
+               <li>
+                <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+                 <span><i class="fas fa-home"></i>Home</span>
+                <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-users"></i>Users</span>
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to books_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-book-open"></i>Books</span>
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to destroy_user_session_path, class: "nav-link text-light", method: :delete do %>
+                  <span><i class="fas fa-sign-out-alt"></i>Log out</span>
+                  <% end %>
+                </li>
+            <% else %>
+                <li>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-home"></i>Home</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to home_about_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-link"></i>About</span>
+                </li>
+                  <% end %>
+                <li>
+                  <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-user-plus"></i>Sign up</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                  <span><i class="fas fa-sign-in-alt"></i>Log in</span>
+                  <% end %>
+                </li>
+
+              <% end %>
+  </header>
     <%= yield %>
   </body>
 </html>
