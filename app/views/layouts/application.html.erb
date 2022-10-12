@@ -12,52 +12,85 @@
 
   <body>
   <header>
-   <% if user_signed_in? %>
+  <% if admin_signed_in? %>
+            <ul>
                <li>
-                <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
-                 <span><i class="fas fa-home"></i>Home</span>
-                <% end %>
+                <%= link_to admin_items_path %>
+                 <span><i>商品一覧</i></span>
+
                 </li>
                 <li>
-                  <%= link_to users_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-users"></i>Users</span>
-                  <% end %>
+                  <%= link_to admin_customers_path %>
+                  <span><i>会員一覧</i></span>
+
                 </li>
 
                 <li>
-                  <%= link_to books_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-book-open"></i>Books</span>
-                  <% end %>
+                  <%= link_to  admin_admin_path %>
+                  <span><i>注文履歴一覧</i></span>
+
                 </li>
 
                 <li>
-                  <%= link_to destroy_user_session_path, class: "nav-link text-light", method: :delete do %>
-                  <span><i class="fas fa-sign-out-alt"></i>Log out</span>
-                  <% end %>
-                </li>
-            <% else %>
-                <li>
-                  <%= link_to root_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-home"></i>Home</span>
-                  <% end %>
+                  <%= link_to admin_genres_path %>
+                  <span><i>ジャンル一覧</i></span>
+
                 </li>
                 <li>
-                  <%= link_to home_about_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-link"></i>About</span>
+                  <%= link_to destroy_admin_session_path, method: :delete %>
+                  <span><i>ログアウト</i></span>
+
                 </li>
-                  <% end %>
+              </ul>
+  <% elsif customer_signed_in? %>
+              <ul>
                 <li>
-                  <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-user-plus"></i>Sign up</span>
-                  <% end %>
+                  <%= link_to customer_path(curret.user.id) %>
+                  <span><i>マイページ</i></span>
+
                 </li>
                 <li>
-                  <%= link_to new_user_session_path, class: "nav-link text-light" do %>
-                  <span><i class="fas fa-sign-in-alt"></i>Log in</span>
-                  <% end %>
+                  <%= link_to items_path %>
+                  <span><i>商品一覧</i></span>
                 </li>
 
-              <% end %>
+                <li>
+                  <%= link_to cart_items_path %>
+                  <span><i>カート</i></span>
+
+                </li>
+                <li>
+                  <%= link_to destroy_customer_session_path, method: :delete %>
+                  <span><i>ログアウト</i></span>
+
+                </li>
+              </ul>
+
+  <% else %>
+              <ul>
+                <li>
+                  <%= link_to about_path %>
+                  <span><i>About</i></span>
+
+                </li>
+                <li>
+                  <%= link_to items_path %>
+                  <span><i>商品一覧</i></span>
+                </li>
+
+                <li>
+                  <%= link_to new_customer_registration_path %>
+                  <span><i>新規登録</i></span>
+
+                </li>
+                <li>
+                  <%= link_to new_customer_session_path %>
+                  <span><i>ログイン</i></span>
+
+                </li>
+              </ul>
+
+  <% end %>
   </header>
     <%= yield %>
   </body>
