@@ -1,11 +1,10 @@
 <h2>商品新規登録</h2>
-<p>Find me in app/views/admin/items/new.html.erb</p>
 
-<%= form_with model: @item　do |f| %>
+<%= form_with model: @item do |f| %>
   <label for="inputImage">商品画像</label></br>
   <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %></br>
 
-  
+
   <div class="field">
     <%= f.label "商品名" %><br />
     <%= f.text_field :name, placeholder: "商品名" %>
@@ -13,12 +12,14 @@
 
   <label for="inputIntroduction">商品説明</label></br>
  <%= f.text_area :text, placeholder: "ここに説明文を記述します" %></br>
-
+  <div class="field">
+  <%#= f.check_box.is_active ? '販売中' : '販売停止中' %>
+  </div>
   <div class="field">
     <%= f.label "税抜価格" %><br />
-    <%= f.text_field :price, placeholder: "1000" %>
+    <%= f.text_field :price, placeholder: "1000" %>円
   </div>
-  
+
   <div class="field">
     <%= f.label "販売ステータス" %><br />
     <%= f.text_field :is_active, placeholder: "商品名" %>

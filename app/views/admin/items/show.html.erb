@@ -1,11 +1,26 @@
-<h2>商品詳細</h2>
-<p>Find me in app/views/admin/items/show.html.erb</p>
-
-<%= @item.name %>
-<%= @item.text%>
-<%= @item.genre %>
-<%= @item.price %>
-<%= @item.is_active %>
 
 
-<%= link_to "編集する", admin_items_edit_path %>
+  <%= @item.image %></br>
+
+  <label>商品名</label>
+  <%= @item.name %>
+
+  <label for="inputIntroduction">商品説明</label></br>
+ <%= @item.text %></br>
+  <div class="field">
+  <%#= f.check_box.is_active ? '販売中' : '販売停止中' %>
+  </div>
+  <div class="field">
+    <label>税込価格</label><br />
+    <%= @item.price %>円
+  </div>
+
+  <div class="field">
+   <label>販売ステータス</label><br />
+   <%#= f.text_field :is_active, placeholder: "商品名" %>
+  </div>
+
+
+  <div class="actions">
+    <%= link_to "編集する", admin_items_edit_path %>
+  </div>
