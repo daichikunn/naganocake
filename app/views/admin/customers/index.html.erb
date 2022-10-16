@@ -14,7 +14,7 @@
           <tr>
             <td><p><%= customer.id %></p>
             </td>
-            <td><p><%= link_to customer.name, admin_customer_path(item)%></p>
+            <td><p><%= link_to customer.full_name, admin_customer_path(customer)%></p>
             </td>
              <td><p><%= customer.email %></p>
             </td>

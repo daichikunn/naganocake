@@ -25,6 +25,11 @@
     <%= f.text_field :is_active, placeholder: "商品名" %>
   </div>
 
+  <%= form_with(model: @item, local: true) do |f| %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.radio_button :is_active, false %>
+<% end %>
+
 
   <div class="actions">
     <%= f.submit "新規登録" %>

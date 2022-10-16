@@ -31,6 +31,16 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+
+  namespace :admin do
+  get "/admin" => "homes#top"
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update, :new]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :orders, only: [:show, :update]
+  patch "/admin/order_details/:id" => "order_details#update"
+  end
+
   scope module: :public do
   root to: "homes#top"
   get "/about" => "homes#about"
@@ -49,14 +59,7 @@ Rails.application.routes.draw do
   end
 
 
-namespace :admin do
-  get "/admin" => "homes#top"
-  resources :items, only: [:index, :new, :create, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update, :new]
-  resources :customers, only: [:index, :show, :edit, :update]
-  resources :orders, only: [:show, :update]
-  patch "/admin/order_details/:id" => "order_details#update"
-end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -17,3 +17,7 @@
           waiting_for_production: "制作待ち"
           now_at_work: "製作中"
           production_complete: "制作完了"
+      item:
+        is_active:
+          true: "販売中"
+          false: "販売停止中"

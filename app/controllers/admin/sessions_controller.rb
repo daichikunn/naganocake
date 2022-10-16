@@ -14,9 +14,9 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+     destroy_admin_session_path, method: :delete
+  end
 
   # protected
 
