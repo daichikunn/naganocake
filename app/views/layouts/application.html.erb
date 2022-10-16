@@ -6,86 +6,99 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
   <header>
   <% if admin_signed_in? %>
             <ul>
+            
                <li>
-                <%= link_to admin_items_path %>
+                <%= link_to admin_items_path do %>
                  <span><i>商品一覧</i></span>
-
+                 <% end %>
                 </li>
+                
                 <li>
-                  <%= link_to admin_customers_path %>
+                  <%= link_to admin_customers_path do %>
                   <span><i>会員一覧</i></span>
-
+                  <% end %>
                 </li>
 
                 <li>
-                  <%= link_to  admin_admin_path %>
+                  <%= link_to  admin_admin_path do %>
                   <span><i>注文履歴一覧</i></span>
-
+                  <% end %>
                 </li>
 
                 <li>
-                  <%= link_to admin_genres_path %>
+                  <%= link_to admin_genres_path do %>
                   <span><i>ジャンル一覧</i></span>
-
+                  <% end %>
                 </li>
+                
                 <li>
-                  <%= link_to destroy_admin_session_path, method: :delete %>
+                  <%= link_to destroy_admin_session_path, method: :delete do %>
                   <span><i>ログアウト</i></span>
-
+                  <% end %>
                 </li>
+                
               </ul>
   <% elsif customer_signed_in? %>
               <ul>
+              
                 <li>
-                  <%= link_to customer_path(curret.user.id) %>
+                  <%= link_to customer_path(curret.user.id) do %>
                   <span><i>マイページ</i></span>
-
+                  <% end %>
                 </li>
+                
                 <li>
-                  <%= link_to items_path %>
+                  <%= link_to items_path do %>
                   <span><i>商品一覧</i></span>
+                  <% end %>
                 </li>
 
                 <li>
-                  <%= link_to cart_items_path %>
+                  <%= link_to cart_items_path do %>
                   <span><i>カート</i></span>
-
+                  <% end %>
                 </li>
+                
                 <li>
-                  <%= link_to destroy_customer_session_path, method: :delete %>
+                  <%= link_to destroy_customer_session_path, method: :delete do %>
                   <span><i>ログアウト</i></span>
-
+                  <% end %>
                 </li>
+                
               </ul>
 
   <% else %>
               <ul>
                 <li>
-                  <%= link_to about_path %>
+                  <%= link_to about_path do %>
                   <span><i>About</i></span>
+                  <% end %>
 
                 </li>
                 <li>
-                  <%= link_to items_path %>
+                  <%= link_to items_path do %>
                   <span><i>商品一覧</i></span>
+                  <% end %>
                 </li>
 
                 <li>
-                  <%= link_to new_customer_registration_path %>
+                  <%= link_to new_customer_registration_path do %>
                   <span><i>新規登録</i></span>
+                  <% end %>
 
                 </li>
                 <li>
-                  <%= link_to new_customer_session_path %>
+                  <%= link_to new_customer_session_path do %>
                   <span><i>ログイン</i></span>
+                  <% end %>
 
                 </li>
               </ul>

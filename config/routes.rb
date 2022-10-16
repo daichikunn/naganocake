@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update]
+  resources :customers, only: [:edit, :update]
+  get "/customers/mypage" => "customers#show"
   get "/customers/check" => "customers#check"
   patch "/customers/withdraw" => "customers#withdraw"
   resources :cart_items, only: [:index, :create, :destroy, :update]
@@ -51,7 +52,7 @@ Rails.application.routes.draw do
 namespace :admin do
   get "/admin" => "homes#top"
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update, :new]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   patch "/admin/order_details/:id" => "order_details#update"

@@ -1,2 +1,29 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+ <h2><%= @customer.full_name%>さんの会員詳細</h2>
+
+  <label>氏名</label>
+  <%= @customer.full_name %>
+  
+  <label>フリガナ</label>
+  <%= @customer.full_name_kana %>
+  
+  <label for="inputIntroduction">郵便番号</label></br>
+  <%= @customer.postal_code %>
+ 
+  <label>住所</label>
+  <%= @customer.address %>
+  
+  <label>電話番号</label>
+  <%= @customer.phone_number %>
+  
+  <label>メールアドレス</label>
+  <%= @customer.email %>
+  
+  <div class="field">
+   <label>会員ステータス</label><br />
+   <%#= f.text_field :is_active, placeholder: "商品名" %>
+  </div>
+
+
+  <div class="actions">
+    <%= link_to "編集する", editadmin_customer_path %>
+  </div>

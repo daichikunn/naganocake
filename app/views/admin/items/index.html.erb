@@ -1,7 +1,6 @@
 <h2>商品一覧</h2>
 
-
-
+<% link_to '新規登録', new_admin_item_path, class: 'btn btn-primary'%>
 
 
      <table>
@@ -19,9 +18,9 @@
           <tr>
             <td><p><%= item.id %></p>
             </td>
-            <td><p><%= link_to item.name, admin_items_path(item)%></p>
+            <td><p><%= link_to item.name, admin_item_path(item)%></p>
             </td>
-             <td><p><%= book.price%></p>
+             <td><p><%= item.price%></p>
             </td>
             <td><p><%= item.genre %></p>
             </td>
