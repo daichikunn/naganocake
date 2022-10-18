@@ -1,6 +1,6 @@
 <h2>商品一覧</h2>
 
-<% link_to '新規登録', new_admin_item_path, class: 'btn btn-primary'%>
+<%= link_to '新規登録', new_admin_item_path, class: 'btn btn-primary'%>
 
 
      <table>
@@ -13,16 +13,23 @@
             <th>ステータス</th>
           </tr>
         </thead>
+
         <tbody>
-      <% @items.each do |item|%>
+<% @items.each do |item|%>
           <tr>
-            <td><p><%= item.id %></p>
+            <td><%= item.id %>
             </td>
-            <td><p><%= link_to item.name, admin_item_path(item)%></p>
+
+            <td><%= link_to item.name, admin_item_path(item)%>
             </td>
-             <td><p><%= item.price%></p>
+
+            <td><%= item.price %>
             </td>
-            <td><p><%= item.genre %></p>
+
+            <td><%= item.genre %>
+            </td>
+
+            <td><%= item.is_active %>
             </td>
           </tr>
         </tbody>

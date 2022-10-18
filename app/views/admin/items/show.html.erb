@@ -6,7 +6,7 @@
   <%= @item.name %>
 
   <label for="inputIntroduction">商品説明</label></br>
- <%= @item.text %></br>
+ <%= @item.introduction %></br>
   <div class="field">
   <%#= f.check_box.is_active ? '販売中' : '販売停止中' %>
   </div>
@@ -17,6 +17,7 @@
 
   <div class="field">
    <label>販売ステータス</label><br />
+   <%= @item.is_active %>
    <%#= f.text_field :is_active, placeholder: "商品名" %>
   </div>
 

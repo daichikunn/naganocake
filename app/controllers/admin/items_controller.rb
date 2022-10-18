@@ -10,9 +10,9 @@ class Admin::ItemsController < ApplicationController
   end
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to admin_item_path(@item.id)
-    end
+    @item.save
+    redirect_to admin_item_path(@item.id)
+
   end
 
   def show
@@ -33,7 +33,7 @@ class Admin::ItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:name, :image, :text, :genre, :price, :is_active)
+    params.require(:item).permit(:name, :image, :genre_id, :introduction, :price, :is_active)
   end
 
 end

@@ -1,27 +1,27 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'homes/top'
-    get 'homes/create'
-  end
+  # namespace :admin do
+  #   get 'customers/index'
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  # end
+  # namespace :admin do
+  #   get 'genres/index'
+  #   get 'genres/edit'
+  # end
+  # namespace :admin do
+  #   get 'items/index'
+  #   get 'items/new'
+  #   get 'items/show'
+  #   get 'items/edit'
+  # end
+  # namespace :admin do
+  #   get 'homes/top'
+  # end
+  # namespace :admin do
+  #   get 'homes/top'
+  #   get 'homes/create'
+  # end
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -34,9 +34,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
   get "/admin" => "homes#top"
-  resources :items, only: [:index, :new, :create, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update, :new]
   resources :customers, only: [:index, :show, :edit, :update]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  # post '/admin/items' => 'items#create'
+  resources :genres, only: [:index, :create, :edit, :update, :new]
   resources :orders, only: [:show, :update]
   patch "/admin/order_details/:id" => "order_details#update"
   end
