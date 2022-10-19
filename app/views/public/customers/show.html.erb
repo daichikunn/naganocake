@@ -1,12 +1,43 @@
 <h2>マイページ</h2>
 
-<p><strong>登録情報</strong>　<% link_to "編集する", edit_customer_path %></p>
+<p><strong>登録情報</strong>　<%= link_to "編集する", customers_info_path %></p>
+
+
+<%= current_customer.postal_code %>
+<%= current_customer.address %>
+<%= current_customer.telephone_number %>
+<%= current_customer.email %>
+
+     <table>
+        <thead>
+          <tr>
+            <th>氏名</th><td><%= current_customer.full_name %></td>
+          </tr>
+
+          <tr>
+            <th>カナ</th><td><%= current_customer.full_name_kana %></td>
+          </tr>
+
+          <tr>
+            <th>郵便番号</th><td><%= current_customer.postal_code %></td>
+          </tr>
+
+          <tr>
+            <th>住所</th><td><%= current_customer.address %></td>
+          </tr>
+
+          <tr>
+            <th>電話番号</th><td><%= current_customer.telephone_number %></td>
+          </tr>
+
+          <tr>
+            <th>メールアドレス</th><td><%= current_customer.email %></td>
+          </tr>
+
+      </table>
 
 
 
 
-
-
-
-<p><strong>配送先</strong>　<% link_to "一覧を見る", addresses_path %></p>
-<p><strong>注文履歴</strong>　<% link_to "一覧を見る", orders_path %></p>
+<p><strong>配送先</strong>　<%= link_to "一覧を見る", addresses_path %></p>
+<p><strong>注文履歴</strong>　<%= link_to "一覧を見る", orders_path %></p>

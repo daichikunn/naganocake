@@ -1,6 +1,6 @@
 
 
-  <%= @item.image %></br>
+  <%= image_tag @item.get_image(100,50) %></br>
 
   <label>商品名</label>
   <%= @item.name %>
@@ -17,7 +17,11 @@
 
   <div class="field">
    <label>販売ステータス</label><br />
-   <%= @item.is_active %>
+   <% if @item.is_active %>
+     販売中
+   <% else %>
+     販売停止中
+   <% end %>
    <%#= f.text_field :is_active, placeholder: "商品名" %>
   </div>
 

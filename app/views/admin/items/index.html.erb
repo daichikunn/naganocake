@@ -15,7 +15,7 @@
         </thead>
 
         <tbody>
-<% @items.each do |item|%>
+        <% @items.each do |item|%>
           <tr>
             <td><%= item.id %>
             </td>
@@ -32,6 +32,6 @@
             <td><%= item.is_active %>
             </td>
           </tr>
+        <% end %>
         </tbody>
       </table>
-    <% end %>
