@@ -1,2 +1,50 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<p>注文情報入力</p>
+<strong>支払方法</strong>
+<%= form_with model: @order,url: orders_path, method: :post do |f| %>
+<%= f.label "クレジットカード" %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0)  %>
+    <%#= f.label Item.is_actives.key(1) %>
+      <%= f.label "銀行振り込み"%>
+  <%= f.radio_button :payment_method,  Order.payment_methods.key(1) %>
+<strong>お届け先</strong>
+<%= f.label "ご自身の住所"%>
+<%= f.radio_button customers.address %>
+
+<%= f.label "登録済住所から選択"%>
+<%= f.radio_button address, Order.payment_methods.key(0)  %>
+
+<%= f.select :, options_from_collection_for_select( Address.all, :id, :address) %>  <%#= f.check_box.is_active ? '販売中' : '販売停止中' %>
+
+<%= f.label"新しいお届け先"%>
+<%= f.radio_button   %>
+  <%= form_with model: @order,url: orders_path, method: :post do |f| %>
+    <div class="field">
+      <%= f.label "郵便番号（ハイフンなし）" %><br />
+    <%= f.text_field :shipping_postal_code %></br>
+    </div>
+    <div class="field">
+      <%= f.label "住所" %><br />
+    <%= f.text_field :shipping_address %></br>
+    </div>
+    <div class="field">
+      <%= f.label "宛名" %><br />
+    <%= f.text_field :shipping_name %></br>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to "確認画面へ進む",  orders_check_path %>
+
+<!--<strong>お届け先</strong>-->
+
+<!---->
+<!--  <%#= f.radio_button ：address,  %>-->
+
+<!-- -->
+<!--  <%#= f.radio_button ：address, Address %>-->
+
+<!---->
+<!--  <%#= form_with model: @address, addresses_path, method: :patch %>-->
+
+
+

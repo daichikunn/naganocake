@@ -52,8 +52,8 @@ Rails.application.routes.draw do
   patch "/customers/update" => "customers#update"
   resource :customers, only: [:update]
   get "/customers/check" => "customers#check"
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   resources :cart_items, only: [:index, :create, :destroy, :update]
-  delete "/cart_items/destroy_all" => "orders#destroy_all"
   resources :orders, only: [ :new, :index, :create, :show]
   post "/orders/check" => "orders#check"
   post "/orders/complete" => "orders#complete"
