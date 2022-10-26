@@ -1,4 +1,5 @@
 <h2>配送先編集</h2>
+<%= form_with model: @address, url: address_path(@address), method: :patch do |f| %>
   <div class="field">
     <%= f.label "郵便番号（ハイフンなし）" %><br />
   <%= f.text_field :postal_code %></br>
