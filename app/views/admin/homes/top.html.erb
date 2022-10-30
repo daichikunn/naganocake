@@ -10,21 +10,24 @@
           </tr>
         </thead>
         <tbody>
-      <% @customers.each do |customer|%>
+      <% @orders.each do |order|%>
           <tr>
-            <td><p><%= customer.id %></p>
+            <td><p><%= link_to admin_order_path(order) do %>
+            <%= l order.created_at %></p>
+            <% end %>
             </td>
-            <td><p><%= link_to customer.full_name, admin_customer_path(customer)%></p>
+            <td><p><%= order.customer.full_name %></p>
             </td>
-             <td><p><%= customer.email %></p>
-            </td>
-            <td><p><% if customer.is_deleted %>
-                     有効
-                   <% else %>
-                     退会
-                   <% end %>
+            <% @amount_total = 0 %>
+            <td><p><% order.order_details.each do |order_detail| %>
+            <%= @amount_total += order_detail.amount %>
+            <% end %>
+            <%= @amount_total %>
                 </p>
             </td>
+             <td><p><%= Order.statuses_i18n[order.status] %></p>
+            </td>
+
           </tr>
             <% end %>
         </tbody>

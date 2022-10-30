@@ -21,3 +21,7 @@
         is_active:
           true: "販売中"
           false: "販売停止中"
+
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
