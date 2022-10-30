@@ -3,8 +3,6 @@
 <%= form_with model: @item,url: admin_items_path, method: :post do |f| %>
   <%= f.label "商品画像" %></br>
   <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %></br>
-
-
   <div class="field">
     <%= f.label "商品名" %><br />
     <%= f.text_field :name, placeholder: "商品名" %>
@@ -32,7 +30,6 @@
       <%= f.label "販売停止中"%>
   <%= f.radio_button :is_active, false %>
   </div>
-
   <div class="actions">
     <%= f.submit "新規登録" %>
   </div>

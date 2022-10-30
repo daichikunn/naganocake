@@ -1,6 +1,6 @@
 <h2>会員一覧</h2>
 
-     <table>
+      <table class= "table">
         <thead>
           <tr>
             <th>会員id</th>
@@ -18,9 +18,14 @@
             </td>
              <td><p><%= customer.email %></p>
             </td>
-            <td><p><%= customer.is_deleted %></p>
+            <td><p><% if customer.is_deleted %>
+                     有効
+                   <% else %>
+                     退会
+                   <% end %>
+                </p>
             </td>
           </tr>
+            <% end %>
         </tbody>
       </table>
-    <% end %>

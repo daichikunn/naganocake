@@ -2,14 +2,7 @@
 
 <p><strong>登録情報</strong>　<%= link_to "編集する", customers_info_path %></p>
 
-
-<%= current_customer.postal_code %>
-<%= current_customer.address %>
-<%= current_customer.telephone_number %>
-<%= current_customer.email %>
-
-     <table>
-        <thead>
+ <table class= "table">
           <tr>
             <th>氏名</th><td><%= current_customer.full_name %></td>
           </tr>
