@@ -20,3 +20,44 @@
                <!--.invertは数字を文字列に変えてくれる-->
                <%= f.submit "更新" %>
               <% end %></td>
+
+<table class= "table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% @order_details.each do |order_detail| %>
+          <tr>
+
+            <td><%= order_detail.item.name %>
+            </td>
+
+            <td><%= order_detail.price %>
+            </td>
+
+            <td><%= order_detail.amount %>
+            </td>
+
+            <td><%= order_detail.amount * order_detail.price %>
+            </td>
+
+            <td><p><%= form_with(model: order_detail,url: admin_path(order_detail.id), method: :patch)do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+               <%#= f.hidden_field :order_id, value: cart_item.item.id %>
+               <!--#この記述↑が正しいのか、フォームで作るのか、よう確認-->
+               <!--.invertは数字を文字列に変えてくれる-->
+               <%= f.submit "更新" %>
+            <% end %>
+
+                </p>
+            </td>
+          </tr>
+      <% end %>
+        </tbody>
+      </table>

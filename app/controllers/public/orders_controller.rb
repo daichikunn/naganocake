@@ -88,16 +88,16 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details =  @order.order_details
+    @order_details =  @order.order_details 
     @total = 0
     @order_details.each do |order_detail|
       @total += order_detail.amount * order_detail.price
     end
-
+    
 
     # 注文に紐づいた内容を表示したい
 
-
+    
 
 
   end
