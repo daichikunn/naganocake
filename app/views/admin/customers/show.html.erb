@@ -20,10 +20,19 @@
 
   <div class="field">
    <label>会員ステータス</label><br />
-   <%#= f.text_field :is_active, placeholder: "商品名" %>
+
+   <% if @customer.is_deleted == false %>
+   有効
+   <% else %>
+   退会
+   <% end %>
   </div>
 
 
   <div class="actions">
     <%= link_to "編集する", edit_admin_customer_path %>
+  </div>
+
+<div class="actions">
+    <%= link_to "注文履歴一覧を見る", admin_admin_path %>
   </div>

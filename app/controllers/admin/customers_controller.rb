@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+ before_action :authenticate_admin!
   def index
     @customers = Customer.all
   end
@@ -15,6 +16,14 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
      redirect_to admin_customer_path(@customer.id)
+  end
+  
+  def withdraw
+    @customer = Customer.find(params[:id])
+    @customer.update(is_deleted: true)
+    reset_session#強制的ログアウト、退会したのにできてないことを防ぐ
+    # flash[:notice] = "退会処理を実行いたしました"
+    redirect_to 
   end
 
 private

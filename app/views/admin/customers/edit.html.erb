@@ -32,8 +32,13 @@
   </div>
 
   <div class="field">
-    <%= f.label "会員ステータス" %><br />
-    <%#= f.text_field :is_deleted %>
+    <%= f.label "販売ステータス" %><br />
+    <%#= f.label Item.is_actives.key(0) %>
+    <%= f.label "有効" %>
+    <%= f.radio_button :is_deleted, false %>
+    <%#= f.label Item.is_actives.key(1) %>
+      <%= f.label "退会"%>
+  <%= f.radio_button :is_deleted, true %>
   </div>
 
   <div class="actions">

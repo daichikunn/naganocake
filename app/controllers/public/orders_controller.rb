@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-
+before_action :authenticate_customer!
   def new
     @order = Order.new
   end
@@ -37,9 +37,11 @@ class Public::OrdersController < ApplicationController
       @order.shipping_fee = 800
       # @order.status = Order.status.key(0)
 # 新しい住所を打ってほしい
-
     end
       @cart_item = current_customer.cart_items
+      if @cart_item == nil
+        redirect_to orders_check_path
+      end
       @total = 0
       @total_all = @order.billing_amount
 
@@ -82,22 +84,22 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
 
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_details =  @order.order_details 
+    @order_details =  @order.order_details
     @total = 0
     @order_details.each do |order_detail|
       @total += order_detail.amount * order_detail.price
     end
-    
+
 
     # 注文に紐づいた内容を表示したい
 
-    
+
 
 
   end
