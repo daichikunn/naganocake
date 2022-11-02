@@ -29,12 +29,13 @@
   </div>
 
   <div class="field">
-    <%= f.label "メールアドレス" %><br />
+    <%= f.label "メールアドレス" %>
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "変更内容を保存" %>
-  </div>
+  <div class="text-center">
+    <%= f.submit "変更内容を保存",class: "btn btn-success" %>
+
 <% end %>
-<%= link_to "退会する", customers_check_path(current_customer.id) %>
+<%= link_to "退会する", customers_check_path(current_customer.id),class: "btn btn-danger" %>
+</div>
