@@ -11,99 +11,110 @@
   </head>
 
   <body>
-  <header>
-  <% if admin_signed_in? %>
-            <ul>
-            
-               <li>
-                <%= link_to admin_items_path do %>
-                 <span><i>商品一覧</i></span>
-                 <% end %>
-                </li>
-                
-                <li>
-                  <%= link_to admin_customers_path do %>
-                  <span><i>会員一覧</i></span>
-                  <% end %>
-                </li>
+  <header class="sticky-top">
 
-                <li>
-                  <%= link_to  admin_admin_path do %>
-                  <span><i>注文履歴一覧</i></span>
-                  <% end %>
-                </li>
+  <div class= "logo">
+  <%= link_to "NAGANOCAKE", root_path %>
+  </div>
 
-                <li>
-                  <%= link_to admin_genres_path do %>
-                  <span><i>ジャンル一覧</i></span>
-                  <% end %>
-                </li>
-                
-                <li>
-                  <%= link_to destroy_admin_session_path, method: :delete do %>
-                  <span><i>ログアウト</i></span>
-                  <% end %>
-                </li>
-                
+       <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+       <!--   <span class="navbar-toggler-icon"></span>-->
+       <!-- </button>-->
+        <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+          <% if admin_signed_in? %>
+                <ul class="d-flex justify-content-end list-unstyled">
+                 <li class="nav-item">
+                  <%= link_to admin_items_path do %>
+                   <span><i>商品一覧</i></span>
+                   <% end %>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <%= link_to admin_customers_path do %>
+                    <span><i>会員一覧</i></span>
+                    <% end %>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <%= link_to  admin_admin_path do %>
+                    <span><i>注文履歴一覧</i></span>
+                    <% end %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to admin_genres_path do %>
+                    <span><i>ジャンル一覧</i></span>
+                    <% end %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to destroy_admin_session_path, method: :delete do %>
+                    <span><i>ログアウト</i></span>
+                    <% end %>
+                  </li>
+
+                </ul>
+              <% elsif customer_signed_in? %>
+                <ul class="d-flex justify-content-end list-unstyled">
+                  <li class="nav-item">
+                    <%= link_to customers_mypage_path do %>
+                    <span><i>マイページ</i></span>
+                    <% end %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to items_path do %>
+                    <span><i>商品一覧</i></span>
+                    <% end %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to cart_items_path do %>
+                    <span><i>カート</i></span>
+                    <% end %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to destroy_customer_session_path, method: :delete do %>
+                    <span><i>ログアウト</i></span>
+                    <% end %>
+                  </li>
+
+                </ul>
+
+              <% else %>
+                <ul class="d-flex justify-content-end list-unstyled">
+                  <li>
+                    <%= link_to about_path do %>
+                    <span><i>About</i></span>
+                    <% end %>
+
+                  </li>
+                  <li>
+                    <%= link_to items_path do %>
+                    <span><i>商品一覧</i></span>
+                    <% end %>
+                  </li>
+
+                  <li>
+                    <%= link_to new_customer_registration_path do %>
+                    <span><i>新規登録</i></span>
+                    <% end %>
+
+                  </li>
+                  <li>
+                    <%= link_to new_customer_session_path do %>
+                    <span><i>ログイン</i></span>
+                    <% end %>
+
+                  </li>
+
               </ul>
-  <% elsif customer_signed_in? %>
-              <ul>
-              
-                <li>
-                  <%= link_to customers_mypage_path do %>
-                  <span><i>マイページ</i></span>
-                  <% end %>
-                </li>
-                
-                <li>
-                  <%= link_to items_path do %>
-                  <span><i>商品一覧</i></span>
-                  <% end %>
-                </li>
+            <% end %>
+            </div>
 
-                <li>
-                  <%= link_to cart_items_path do %>
-                  <span><i>カート</i></span>
-                  <% end %>
-                </li>
-                
-                <li>
-                  <%= link_to destroy_customer_session_path, method: :delete do %>
-                  <span><i>ログアウト</i></span>
-                  <% end %>
-                </li>
-                
-              </ul>
-
-  <% else %>
-              <ul>
-                <li>
-                  <%= link_to about_path do %>
-                  <span><i>About</i></span>
-                  <% end %>
-
-                </li>
-                <li>
-                  <%= link_to items_path do %>
-                  <span><i>商品一覧</i></span>
-                  <% end %>
-                </li>
-
-                <li>
-                  <%= link_to new_customer_registration_path do %>
-                  <span><i>新規登録</i></span>
-                  <% end %>
-
-                </li>
-                <li>
-                  <%= link_to new_customer_session_path do %>
-                  <span><i>ログイン</i></span>
-                  <% end %>
-
-                </li>
-              </ul>
-
-  <% end %>
   </header>
     <%= yield %>
   </body>

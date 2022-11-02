@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
 before_action :authenticate_customer!
   def new
+    return redirect_to cart_items_path if current_customer.cart_items.blank?
     @order = Order.new
   end
 
@@ -38,16 +39,11 @@ before_action :authenticate_customer!
       # @order.status = Order.status.key(0)
 # 新しい住所を打ってほしい
     end
-      @cart_item = current_customer.cart_items
-      if @cart_item == nil
-        redirect_to orders_check_path
-      end
+      # redirect_to orders_check_path
+      @cart_items = current_customer.cart_items
       @total = 0
       @total_all = @order.billing_amount
-
-
-
-  end
+    end
 
   def create
     @order = Order.new(order_params)
@@ -98,11 +94,7 @@ before_action :authenticate_customer!
 
 
     # 注文に紐づいた内容を表示したい
-
-
-
-
-  end
+    end
 
 
 private

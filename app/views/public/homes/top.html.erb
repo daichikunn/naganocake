@@ -9,3 +9,14 @@
 
 <h3>新着商品</h3>
 
+<div class= "items_box">
+  <div class= "items">
+    <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+      <% image_tag item.get_image(100,50) %>
+    <% end %>
+    <%= item.name %>
+    ￥<%= item.price%>
+    <% end %>
+    <!--インラインメゾットをつかう-->
+  </div>

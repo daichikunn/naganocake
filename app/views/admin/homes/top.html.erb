@@ -20,7 +20,7 @@
             </td>
             <% @amount_total = 0 %>
             <td><p><% order.order_details.each do |order_detail| %>
-            <%= @amount_total += order_detail.amount %>
+            <% @amount_total += order_detail.amount %>
             <% end %>
             <%= @amount_total %>
                 </p>
