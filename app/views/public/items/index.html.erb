@@ -2,13 +2,19 @@
 
 
 <div class= "items_box">
-  <div class= "items">
-    <% @items.each do |item| %>
-    <%= link_to item_path(item.id) do %>
-      <% image_tag item.get_image(100,50) %>
-    <% end %>
-    <%= item.name %>
-    ￥<%= item.price%>
-    <% end %>
+  <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-3">
+      <div class= "image">
+      <%= link_to item_path(item.id) do %>
+        <% image_tag item.get_image(100,50) %>
+      <% end %>
+      <%= item.name %>
+      ￥<%= item.price%>
+      </div>
+    </div>
+      <% end %>
+
+  </div>
     <!--インラインメゾットをつかう-->
   </div>

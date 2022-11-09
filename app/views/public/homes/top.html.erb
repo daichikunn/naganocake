@@ -1,22 +1,31 @@
 <h1>topページ</h1>
-<div class= "top_text" >
-  <p>ようこそ、ながのCAKEへ！</br>
-  このサイトでは、ケーキ販売のECサイトになります。
-  会員でない方も商品の閲覧はできますが、
-  購入には会員登録が必要になります。
-  </p>
+<div class="center-block">
+  <div class="text-left" >
+    ようこそ、ながのCAKEへ！</br>
+    このサイトでは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります。</br>
+  </div>
 </div>
 
-<h3>新着商品</h3>
+<h3><strong>新着商品</strong></h3>
 
 <div class= "items_box">
-  <div class= "items">
-    <% @items.each do |item| %>
-    <%= link_to item_path(item.id) do %>
-      <% image_tag item.get_image(100,50) %>
-    <% end %>
-    <%= item.name %>
-    ￥<%= item.price%>
-    <% end %>
+  <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-3">
+      <div class= "image">
+      <%= link_to item_path(item.id) do %>
+        <% image_tag item.get_image(100,100) %>
+      <% end %>
+      </div>
+      <%= item.name %></br>
+      ￥<%= item.price%></br>
+    </div>
+      <% end %>
+
+  </div>
     <!--インラインメゾットをつかう-->
   </div>
+
+

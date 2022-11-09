@@ -1,7 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
     # @order = Order.find(params[:id])
-    @orders = Order.all
+    @orders = Order.page(params[:page])
     # @order = Order.find(params[:id])
     # @order_details =  @order.order_details
     # @amount_total = 0
